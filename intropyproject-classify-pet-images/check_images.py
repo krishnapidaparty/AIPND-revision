@@ -80,6 +80,7 @@ def main():
     classify_images(in_arg.dir, results, in_arg.arch)
 
     # Function that checks Results Dictionary using results    
+    
     check_classifying_images(results)    
 
     
@@ -104,7 +105,9 @@ def main():
     # Calculates results of run and puts statistics in the Results Statistics
     # Dictionary - called results_stats
     results_stats = calculates_results_stats(results)
-
+    for key in results:
+        print (key, results[key])
+        print("\n")
     # Function that checks Results Statistics Dictionary using results_stats
     check_calculating_results(results, results_stats)
 

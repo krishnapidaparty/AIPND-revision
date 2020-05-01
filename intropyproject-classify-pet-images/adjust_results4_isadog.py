@@ -80,14 +80,14 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Remove the newline character
             # from the variable line  
             # Process line by striping newline from line
-            line.rstrip()
+            n_line=line.rstrip("\n")
             # Check if the dogname(line) 
             # exists within dognames_dic, then if the dogname(line) 
             # doesn't exist within dognames_dic then add the dogname(line) 
             # to dognames_dic as the 'key' with the 'value' of 1. 
             # adds dogname(line) to dogsnames_dic if it doesn't already exist 
             # in the dogsnames_dic dictionary
-            if line not in dogname_dic:
+            if n_line not in dogname_dic:
                 dogname_dic[line] = 1
             else:
                 print("** Warning: Key=", line, "already exists in dogname_dic")
@@ -106,7 +106,7 @@ def adjust_results4_isadog(results_dic, dogfile):
           # Classifier Label IS image of Dog (e.g. found in dognames_dic)
             # appends (1, 1) because both labels are dogs
             if results_dic[key][1] in dogname_dic:
-                results_dic[key].extend([1, 1]) 
+                results_dic[key].extend((1, 1)) 
             # append (1,0) to the value using 
             # the extend list function. This indicates
             # the pet label is-a-dog, classifier label is-NOT-a-dog. 
@@ -114,7 +114,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Classifier Label IS NOT image of dog (e.g. NOT in dognames_dic)
             # appends (1,0) because only pet label is a dog
             else:
-                results_dic[key].extend([1, 0])
+                results_dic[key].extend((1, 0))
         else:
             # append (0,1) to the value uisng
             # the extend list function. This indicates
@@ -123,7 +123,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Classifier Label IS image of Dog (e.g. found in dognames_dic)
             # appends (0, 1)because only Classifier labe is a dog
             if results_dic[key][1] in dogname_dic:
-                results_dic[key].extend([0, 1])
+                results_dic[key].extend((0, 1))
             # append (0,0) to the value using the 
             # extend list function. This indicates
             # the pet label is-NOT-a-dog, classifier label is-NOT-a-dog. 
@@ -131,5 +131,5 @@ def adjust_results4_isadog(results_dic, dogfile):
             # Classifier Label IS NOT image of Dog (e.g. NOT in dognames_dic)
             # appends (0, 0) because both labels aren't dogs
             else:
-                results_dic[key].extend([0, 0])
+                results_dic[key].extend((0, 0))
                     

@@ -88,7 +88,7 @@ def adjust_results4_isadog(results_dic, dogfile):
             # adds dogname(line) to dogsnames_dic if it doesn't already exist 
             # in the dogsnames_dic dictionary
             if n_line not in dogname_dic:
-                dogname_dic[line] = 1
+                dogname_dic[n_line] = 1
             else:
                 print("** Warning: Key=", line, "already exists in dogname_dic")
             # Reads in next line in file to be processed with while loop
